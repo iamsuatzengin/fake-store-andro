@@ -1,4 +1,4 @@
-package com.example.fakestoreandro.core.viewbinding
+package com.example.fakestoreandro.util.viewbinding
 
 import android.view.View
 import androidx.fragment.app.Fragment

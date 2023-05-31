@@ -9,8 +9,6 @@ import com.example.fakestoreandro.util.Resource
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
-import kotlinx.coroutines.flow.launchIn
-import kotlinx.coroutines.flow.onEach
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
@@ -27,21 +25,23 @@ class HomeViewModel @Inject constructor(
     }
 
     private fun getProductList() {
-        repository.getProductList().onEach { result ->
-            when (result) {
-                is Resource.Success -> {
-                    _state.value = result.data ?: emptyList()
-                }
+        viewModelScope.launch {
+            repository.getProductList().collect { result ->
+                when (result) {
+                    is Resource.Success -> {
+                        _state.value = result.data ?: emptyList()
+                    }
 
-                is Resource.Error -> {
-                    Log.e("ERROR", result.errorMessage)
-                }
+                    is Resource.Error -> {
+                        println("ERROR ${result.errorMessage}")
+                    }
 
-                is Resource.Loading -> {
-                    println("Loading...")
+                    is Resource.Loading -> {
+                        println("Loading...")
+                    }
                 }
             }
-        }.launchIn(viewModelScope)
+        }
     }
 
     fun getProductByID(id: Int) {

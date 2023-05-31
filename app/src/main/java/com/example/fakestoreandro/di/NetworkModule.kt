@@ -2,6 +2,9 @@ package com.example.fakestoreandro.di
 
 import android.util.Log
 import com.example.fakestoreandro.BuildConfig
+import com.example.fakestoreandro.util.Constants.CONNECT_TIMEOUT
+import com.example.fakestoreandro.util.Constants.KTOR_LOGGER_TAG
+import com.example.fakestoreandro.util.Constants.SOCKET_TIMEOUT
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -20,9 +23,7 @@ import javax.inject.Singleton
 @InstallIn(SingletonComponent::class)
 @Module
 object NetworkModule {
-    private const val KTOR_LOGGER_TAG = "KTOR_LOGGER"
-    private const val CONNECT_TIMEOUT = 30_000
-    private const val SOCKET_TIMEOUT = 30_000
+
 
     @Provides
     @Singleton

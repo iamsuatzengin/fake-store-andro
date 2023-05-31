@@ -1,10 +1,10 @@
 package com.example.fakestoreandro.data.service
 
-import com.example.fakestoreandro.core.safeApiCall
 import com.example.fakestoreandro.data.model.ProductDto
-import com.example.fakestoreandro.data.model.ProductRequest
+import com.example.fakestoreandro.data.model.ProductRequestModel
 import com.example.fakestoreandro.util.ApiResponse
 import com.example.fakestoreandro.util.Constants
+import com.example.fakestoreandro.util.extension.safeApiCall
 import io.ktor.client.HttpClient
 import io.ktor.client.request.get
 import io.ktor.client.request.post
@@ -26,7 +26,7 @@ class ApiService @Inject constructor(
     }
 
     suspend fun addNewProduct(): Flow<ApiResponse<ProductDto>> = safeApiCall {
-        val newProduct = ProductRequest(
+        val newProduct = ProductRequestModel(
             "yeni ürünüm",
             24.5,
             "açıkllama yeni ürünün",
@@ -39,4 +39,3 @@ class ApiService @Inject constructor(
         }
     }
 }
-

@@ -5,13 +5,11 @@ import android.view.View
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Lifecycle
-import androidx.lifecycle.lifecycleScope
-import androidx.lifecycle.repeatOnLifecycle
 import com.example.fakestoreandro.R
-import com.example.fakestoreandro.core.viewbinding.viewBinding
 import com.example.fakestoreandro.databinding.FragmentHomeBinding
+import com.example.fakestoreandro.util.extension.observeFlowWithLifecycle
+import com.example.fakestoreandro.util.viewbinding.viewBinding
 import dagger.hilt.android.AndroidEntryPoint
-import kotlinx.coroutines.launch
 
 @AndroidEntryPoint
 class HomeFragment : Fragment(R.layout.fragment_home) {
@@ -27,24 +25,22 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
             viewModel.addNewProduct()
         }
 
-        viewModel.getProductByID(1)
+        //viewModel.getProductByID(1)
 
-        lifecycleScope.launch {
-            viewLifecycleOwner.repeatOnLifecycle(Lifecycle.State.STARTED) {
-                viewModel.state.collect {
-                    if (it.isNotEmpty()) {
-                        println(
-                            """
+        observeFlowWithLifecycle(Lifecycle.State.STARTED) {
+            viewModel.state.collect {
+                if (it.isNotEmpty()) {
+                    println(
+                        """
                         list item first: 
                         ${it.first()}
                     """.trimIndent()
-                        )
+                    )
 
-                        binding.tv.text = it.first().title
-                    }
+                    binding.tv.text = it.first().title
                 }
             }
         }
     }
-
 }
+

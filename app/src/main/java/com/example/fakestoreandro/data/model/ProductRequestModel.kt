@@ -4,7 +4,7 @@ import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
 @Serializable
-data class ProductRequest(
+data class ProductRequestModel(
     @SerialName("title")
     val title: String,
     @SerialName("price")

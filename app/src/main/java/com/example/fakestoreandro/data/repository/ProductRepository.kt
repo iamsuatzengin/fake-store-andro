@@ -14,15 +14,13 @@ import javax.inject.Inject
 class ProductRepository @Inject constructor(
     private val apiService: ApiService
 ) {
-    fun getProductList(): Flow<Resource<List<ProductUIModel>>> = flow {
+    suspend fun getProductList(): Flow<Resource<List<ProductUIModel>>> = flow {
         emit(Resource.Loading)
         apiService.getProductList().collect {
             when (it) {
                 is ApiResponse.Success -> {
                     emit(
-                        Resource.Success(it.body.map { productDto ->
-                            productDto.toProductUIModel()
-                        })
+                        Resource.Success(it.body.toProductUIModel())
                     )
                 }
 
@@ -48,7 +46,7 @@ class ProductRepository @Inject constructor(
         }
     }.flowOn(Dispatchers.IO)
 
-    fun addNewProduct(): Flow<Resource<ProductUIModel>> = flow {
+    suspend fun addNewProduct(): Flow<Resource<ProductUIModel>> = flow {
         emit(Resource.Loading)
         apiService.addNewProduct().collect {
             when (it) {
@@ -62,4 +60,5 @@ class ProductRepository @Inject constructor(
             }
         }
     }.flowOn(Dispatchers.IO)
+
 }
