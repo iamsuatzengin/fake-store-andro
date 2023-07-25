@@ -9,5 +9,25 @@
         android:id="@+id/homeFragment"
         android:name="com.example.fakestoreandro.ui.home.HomeFragment"
         android:label="fragment_home"
-        tools:layout="@layout/fragment_home" />
+        tools:layout="@layout/fragment_home" >
+        <action
+            android:id="@+id/action_homeFragment_to_productBottomSheetFragment"
+            app:destination="@id/productBottomSheetFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_productDetailFragment"
+            app:destination="@id/productDetailFragment" />
+    </fragment>
+    <dialog
+        android:id="@+id/productBottomSheetFragment"
+        android:name="com.example.fakestoreandro.ui.home.bottomsheet.ProductBottomSheetFragment"
+        android:label="ProductBottomSheetFragment" >
+        <argument
+            android:name="product"
+            app:argType="com.example.fakestoreandro.model.ProductUIModel" />
+    </dialog>
+    <fragment
+        android:id="@+id/productDetailFragment"
+        android:name="com.example.fakestoreandro.ui.productdetail.ProductDetailFragment"
+        android:label="fragment_product_detail"
+        tools:layout="@layout/fragment_product_detail" />
 </navigation>

@@ -2,4 +2,11 @@
     <string name="app_name">FakeStoreAndro</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="content_description_product_image">Product image</string>
+    <string name="btn_text_add_to_bag">Add to bag</string>
+    <string name="btn_add_to_bag">Add to bag</string>
+    <string name="btn_go_to_detail">Go To Detail</string>
+    <string name="edit_text_search">Search</string>
+    <string name="tv_category_label">Kategori:</string>
+    <string name="text_see_all">See all</string>
 </resources>

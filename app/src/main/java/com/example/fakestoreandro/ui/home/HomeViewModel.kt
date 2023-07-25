@@ -22,11 +22,12 @@ class HomeViewModel @Inject constructor(
 
     init {
         getProductList()
+        //getProductByID(5)
     }
 
     private fun getProductList() {
         viewModelScope.launch {
-            repository.getProductList().collect { result ->
+            repository.getProducts().collect { result ->
                 when (result) {
                     is Resource.Success -> {
                         _state.value = result.data ?: emptyList()
@@ -60,27 +61,6 @@ class HomeViewModel @Inject constructor(
                         println("Loading...")
                     }
                 }
-            }
-        }
-    }
-
-    fun addNewProduct() {
-        viewModelScope.launch {
-            repository.addNewProduct().collect { result ->
-                when (result) {
-                    is Resource.Success -> {
-                        println("item: ${result.data}")
-                    }
-
-                    is Resource.Error -> {
-                        println("ERROR ${result.errorMessage}")
-                    }
-
-                    is Resource.Loading -> {
-                        println("Loading...")
-                    }
-                }
-
             }
         }
     }

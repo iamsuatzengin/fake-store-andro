@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="Title.Bold" parent="Widget.MaterialComponents.TextView">
+        <item name="android:textStyle">bold</item>
+        <item name="android:textSize">@dimen/text_size_18sp</item>
+        <item name="android:textColor">@color/black</item>
+    </style>
+</resources>

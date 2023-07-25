@@ -15,7 +15,10 @@ inline fun <reified T> safeApiCall(crossinline action: suspend () -> HttpRespons
             action().apply {
                 if (status.isSuccess()) {
                     val x = body<T>()
+                    println("bodyy: $x")
                     emit(ApiResponse.Success(x))
+                } else {
+                    emit(ApiResponse.Error("${status.value} - ${status.description}"))
                 }
             }
         } catch (e: Exception) {

@@ -4,11 +4,12 @@ import com.example.fakestoreandro.data.model.ProductDto
 import com.example.fakestoreandro.model.ProductUIModel
 
 fun ProductDto.toProductUIModel() = ProductUIModel(
-    id = id,
-    title = title,
-    price = price,
-    imageUrl = imageUrl,
-    rating = rating?.toRatingUIModel()
+    id = id ?: 0,
+    title = title ?: "",
+    price = price ?: 0.0,
+    imageUrl = imageUrl ?: "",
+    rating = rating?.toRatingUIModel(),
+    category = category ?: ""
 )
 
 fun List<ProductDto>.toProductUIModel() = map(ProductDto::toProductUIModel)
