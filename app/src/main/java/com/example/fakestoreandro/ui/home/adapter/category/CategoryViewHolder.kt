@@ -9,13 +9,15 @@ import com.example.fakestoreandro.model.CategoryType
 class CategoryViewHolder(
     private val binding: ItemCategoryBinding
 ) : RecyclerView.ViewHolder(binding.root) {
-    fun bind(item: CategoryType) {
+    fun bind(item: CategoryType, onCategoryClick: (CategoryType) -> Unit) {
         binding.apply {
             tvCategoryTitle.text = item.getCapilatizedTitle()
             ivCategoryIcon.setImageResource(item.image)
+
+            cardView.setOnClickListener { onCategoryClick(item) }
         }
     }
-    
+
     companion object {
         fun from(context: Context): CategoryViewHolder {
             val layoutInflater = LayoutInflater.from(context)

@@ -2,13 +2,12 @@ package com.example.fakestoreandro.ui.home.bottomsheet
 
 import android.os.Bundle
 import android.view.View
-import android.widget.ImageView
 import androidx.navigation.fragment.navArgs
-import com.bumptech.glide.Glide
 import com.example.fakestoreandro.R
 import com.example.fakestoreandro.databinding.FragmentProductBottomSheetBinding
 import com.example.fakestoreandro.util.extension.addPrefix
 import com.example.fakestoreandro.util.extension.addSuffix
+import com.example.fakestoreandro.util.extension.loadImage
 import com.example.fakestoreandro.util.viewbinding.viewBinding
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 
@@ -37,7 +36,4 @@ class ProductBottomSheetFragment :
             println("listener -- count : ${it} ")
         }
     }
-    fun ImageView.loadImage(url: String) = Glide.with(requireActivity())
-        .load(url)
-        .into(this)
 }

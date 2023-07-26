@@ -33,7 +33,7 @@ class ProductCountView @JvmOverloads constructor(
     }
 
 
-    fun onClickAddButton() {
+    private fun onClickAddButton() {
         scaleAnimation().start()
         count++
         updateCountText()
@@ -42,7 +42,7 @@ class ProductCountView @JvmOverloads constructor(
         countListener?.invoke(count)
     }
 
-    fun onClickRemoveButton() {
+    private fun onClickRemoveButton() {
         if (count < 1) return
 
         scaleAnimation().start()

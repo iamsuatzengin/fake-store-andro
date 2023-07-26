@@ -7,7 +7,10 @@ import com.example.fakestoreandro.data.repository.ProductRepository
 import com.example.fakestoreandro.model.ProductUIModel
 import com.example.fakestoreandro.util.Resource
 import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.flow.MutableSharedFlow
 import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.asSharedFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.launch
 import javax.inject.Inject
@@ -17,34 +20,42 @@ class HomeViewModel @Inject constructor(
     private val repository: ProductRepository,
 ) : ViewModel() {
 
-    private val _state = MutableStateFlow<List<ProductUIModel>>(emptyList())
-    val state = _state.asStateFlow()
+    private val _uiState = MutableStateFlow(HomeUiState(isLoading = true))
+    val uiState = _uiState.asStateFlow()
+
+    private val _uiEvent = MutableSharedFlow<HomeUiEvent>()
+    val uiEvent = _uiEvent.asSharedFlow()
 
     init {
         getProductList()
-        //getProductByID(5)
     }
 
     private fun getProductList() {
         viewModelScope.launch {
+            delay(1000)
             repository.getProducts().collect { result ->
-                when (result) {
+                when(result) {
                     is Resource.Success -> {
-                        _state.value = result.data ?: emptyList()
+                        _uiState.emit(HomeUiState(list = result.data ?: emptyList()))
                     }
-
                     is Resource.Error -> {
-                        println("ERROR ${result.errorMessage}")
+                        _uiState.emit(HomeUiState(errorMessage = result.errorMessage))
                     }
-
                     is Resource.Loading -> {
-                        println("Loading...")
+                        _uiState.emit(HomeUiState(isLoading = true))
                     }
                 }
             }
         }
     }
 
+    fun navigateSeeAll() {
+        viewModelScope.launch {
+            _uiEvent.emit(HomeUiEvent.NavigateSeeAll(list = _uiState.value.list))
+        }
+    }
+
+    // now, this function is never used!
     fun getProductByID(id: Int) {
         viewModelScope.launch {
             repository.getProductByID(id).collect { result ->
@@ -64,4 +75,16 @@ class HomeViewModel @Inject constructor(
             }
         }
     }
+}
+
+data class HomeUiState(
+    val list: List<ProductUIModel> = emptyList(),
+    val errorMessage: String? = null,
+    val isLoading: Boolean = false,
+)
+
+interface UiEvent
+
+sealed interface HomeUiEvent: UiEvent {
+    data class NavigateSeeAll(val list: List<ProductUIModel>) : HomeUiEvent
 }

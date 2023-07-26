@@ -3,22 +3,24 @@ package com.example.fakestoreandro.ui.home
 import android.os.Bundle
 import android.view.View
 import android.view.inputmethod.EditorInfo
-import android.widget.Toast
+import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.Lifecycle
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.fakestoreandro.R
 import com.example.fakestoreandro.databinding.FragmentHomeBinding
 import com.example.fakestoreandro.model.CategoryType
 import com.example.fakestoreandro.model.ProductUIModel
+import com.example.fakestoreandro.ui.home.adapter.RecyclerViewItemDecoration
 import com.example.fakestoreandro.ui.home.adapter.category.CategoryAdapter
 import com.example.fakestoreandro.ui.home.adapter.product.ProductAdapter
 import com.example.fakestoreandro.ui.home.adapter.product.ProductAdapterCallback
-import com.example.fakestoreandro.ui.home.adapter.RecyclerViewItemDecoration
 import com.example.fakestoreandro.util.extension.collectWithLifecycle
 import com.example.fakestoreandro.util.viewbinding.viewBinding
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.launch
 
 @AndroidEntryPoint
 class HomeFragment : Fragment(R.layout.fragment_home), ProductAdapterCallback {
@@ -29,7 +31,7 @@ class HomeFragment : Fragment(R.layout.fragment_home), ProductAdapterCallback {
         ProductAdapter(this)
     }
 
-    private val categoryAdapter: CategoryAdapter by lazy { CategoryAdapter() }
+    private val categoryAdapter: CategoryAdapter by lazy { CategoryAdapter(this::onCategoryClick) }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -37,8 +39,35 @@ class HomeFragment : Fragment(R.layout.fragment_home), ProductAdapterCallback {
         setupProductRecyclerView()
         setupCategoryRecyclerView()
 
-        viewModel.state.collectWithLifecycle(viewLifecycleOwner) {
-            productAdapter.submitList(it)
+        viewLifecycleOwner.collectWithLifecycle(Lifecycle.State.STARTED) {
+            launch {
+                viewModel.uiState.collect { state ->
+                    if (state.isLoading) {
+                        binding.clGroup.isVisible = false
+                    }
+
+                    if (!state.errorMessage.isNullOrEmpty()) println("error : ${state.errorMessage}")
+
+                    if (state.list.isNotEmpty()) {
+                        binding.clGroup.isVisible = true
+                        productAdapter.submitList(state.list.subList(0, 3))
+                    }
+                }
+            }
+
+            launch {
+                viewModel.uiEvent.collect { event ->
+                    when (event) {
+                        is HomeUiEvent.NavigateSeeAll -> {
+                            val action =
+                                HomeFragmentDirections.actionHomeFragmentToProductListFragment(
+                                    event.list.toTypedArray(), null
+                                )
+                            findNavController().navigate(action)
+                        }
+                    }
+                }
+            }
         }
 
         binding.apply {
@@ -48,7 +77,18 @@ class HomeFragment : Fragment(R.layout.fragment_home), ProductAdapterCallback {
                 }
                 true
             }
+
+            tvSeeAll.setOnClickListener {
+                viewModel.navigateSeeAll()
+            }
         }
+    }
+
+    private fun onCategoryClick(categoryType: CategoryType) {
+        val action = HomeFragmentDirections.actionHomeFragmentToProductListFragment(
+            emptyArray(), category = categoryType.title
+        )
+        findNavController().navigate(action)
     }
 
     private fun setupProductRecyclerView() {
@@ -72,13 +112,11 @@ class HomeFragment : Fragment(R.layout.fragment_home), ProductAdapterCallback {
     }
 
     override fun onClickCard(product: ProductUIModel) {
-        Toast.makeText(requireContext(), "Card tıklandı", Toast.LENGTH_SHORT).show()
         findNavController()
             .navigate(R.id.action_homeFragment_to_productDetailFragment)
     }
 
     override fun onClickAddToBagButton(product: ProductUIModel) {
-        Toast.makeText(requireContext(), "Button tıklandı", Toast.LENGTH_SHORT).show()
         val action = HomeFragmentDirections.actionHomeFragmentToProductBottomSheetFragment(product)
         findNavController().navigate(action)
     }

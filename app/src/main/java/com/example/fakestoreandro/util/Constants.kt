@@ -4,6 +4,7 @@ object Constants {
 
     // URL parameters
     const val PRODUCTS = "products"
+    const val CATEGORY = "products/category"
 
     // Ktor Config
     const val KTOR_LOGGER_TAG = "KTOR_LOGGER"
