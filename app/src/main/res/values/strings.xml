@@ -8,4 +8,7 @@
     <string name="tv_category_label">Kategori:</string>
     <string name="text_see_all">See all</string>
     <string name="hot_sales">Hot Sales</string>
+    <string name="menu_profile">Profile</string>
+    <string name="menu_basket">Basket</string>
+    <string name="menu_home">Home</string>
 </resources>

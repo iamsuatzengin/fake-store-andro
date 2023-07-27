@@ -3,47 +3,10 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
-    app:startDestination="@id/homeFragment">
+    app:startDestination="@id/home_nav_graph">
 
-    <fragment
-        android:id="@+id/homeFragment"
-        android:name="com.example.fakestoreandro.ui.home.HomeFragment"
-        android:label="fragment_home"
-        tools:layout="@layout/fragment_home" >
-        <action
-            android:id="@+id/action_homeFragment_to_productBottomSheetFragment"
-            app:destination="@id/productBottomSheetFragment" />
-        <action
-            android:id="@+id/action_homeFragment_to_productDetailFragment"
-            app:destination="@id/productDetailFragment" />
-        <action
-            android:id="@+id/action_homeFragment_to_productListFragment"
-            app:destination="@id/productListFragment" />
-    </fragment>
-    <dialog
-        android:id="@+id/productBottomSheetFragment"
-        android:name="com.example.fakestoreandro.ui.home.bottomsheet.ProductBottomSheetFragment"
-        android:label="ProductBottomSheetFragment" >
-        <argument
-            android:name="product"
-            app:argType="com.example.fakestoreandro.model.ProductUIModel" />
-    </dialog>
-    <fragment
-        android:id="@+id/productDetailFragment"
-        android:name="com.example.fakestoreandro.ui.productdetail.ProductDetailFragment"
-        android:label="fragment_product_detail"
-        tools:layout="@layout/fragment_product_detail" />
-    <fragment
-        android:id="@+id/productListFragment"
-        android:name="com.example.fakestoreandro.ui.productlist.ProductListFragment"
-        android:label="fragment_product_list"
-        tools:layout="@layout/fragment_product_list" >
-        <argument
-            android:name="product_list"
-            app:argType="com.example.fakestoreandro.model.ProductUIModel[]" />
-        <argument
-            android:name="category"
-            app:argType="string"
-            app:nullable="true" />
-    </fragment>
+
+    <include app:graph="@navigation/home_nav_graph" />
+    <include app:graph="@navigation/basket_nav_graph" />
+    <include app:graph="@navigation/profile_nav_graph" />
 </navigation>
