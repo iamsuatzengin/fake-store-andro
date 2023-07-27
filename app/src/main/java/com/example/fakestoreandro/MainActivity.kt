@@ -2,6 +2,7 @@ package com.example.fakestoreandro
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.view.isVisible
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.setupWithNavController
 import com.example.fakestoreandro.databinding.ActivityMainBinding
@@ -24,6 +25,10 @@ class MainActivity : AppCompatActivity() {
         val navController = navHostFragment.navController
 
         binding.bottomNavigation.setupWithNavController(navController)
+
+        navController.addOnDestinationChangedListener { _, destination, _ ->
+            binding.bottomNavigation.isVisible = destination.id != R.id.productDetailFragment
+        }
 
         val badge = binding.bottomNavigation.getOrCreateBadge(R.id.basket_nav_graph)
         badge.isVisible = true

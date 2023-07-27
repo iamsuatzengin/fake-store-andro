@@ -49,10 +49,11 @@ class ProductListFragment : Fragment(R.layout.fragment_product_list), ProductAda
         viewModel.getProductListByCategory(category)
 
         viewModel.uiState.collectWithLifecycle(viewLifecycleOwner) { state ->
-            when(state) {
+            when (state) {
                 is Resource.Success -> {
                     productAdapter.submitList(state.data)
                 }
+
                 is Resource.Error -> println("Error : ${state.errorMessage}")
                 Resource.Loading -> println("loading!!!")
             }
@@ -72,11 +73,13 @@ class ProductListFragment : Fragment(R.layout.fragment_product_list), ProductAda
     }
 
     override fun onClickCard(product: ProductUIModel) {
-        TODO("Not yet implemented")
+        val action =
+            ProductListFragmentDirections.actionProductListFragmentToProductDetailFragment(product)
+        findNavController().navigate(action)
     }
 
     override fun onClickAddToBagButton(product: ProductUIModel) {
-        TODO("Not yet implemented")
+
     }
 
 }

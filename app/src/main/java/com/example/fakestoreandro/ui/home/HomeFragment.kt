@@ -112,8 +112,8 @@ class HomeFragment : Fragment(R.layout.fragment_home), ProductAdapterCallback {
     }
 
     override fun onClickCard(product: ProductUIModel) {
-        findNavController()
-            .navigate(R.id.action_homeFragment_to_productDetailFragment)
+        val action = HomeFragmentDirections.actionHomeFragmentToProductDetailFragment(product)
+        findNavController().navigate(action)
     }
 
     override fun onClickAddToBagButton(product: ProductUIModel) {
