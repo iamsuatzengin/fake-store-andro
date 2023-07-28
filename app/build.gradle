@@ -48,7 +48,7 @@ android {
 }
 
 dependencies {
-    def nav_version = "2.5.3"
+    def nav_version = "2.6.0"
     def ktor_version = "2.3.0"
 
     implementation 'androidx.core:core-ktx:1.10.1'

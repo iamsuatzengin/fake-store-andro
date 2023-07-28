@@ -20,7 +20,6 @@ import com.example.fakestoreandro.ui.home.adapter.product.ProductAdapterCallback
 import com.example.fakestoreandro.util.extension.collectWithLifecycle
 import com.example.fakestoreandro.util.viewbinding.viewBinding
 import dagger.hilt.android.AndroidEntryPoint
-import kotlinx.coroutines.launch
 
 @AndroidEntryPoint
 class HomeFragment : Fragment(R.layout.fragment_home), ProductAdapterCallback {
@@ -40,32 +39,16 @@ class HomeFragment : Fragment(R.layout.fragment_home), ProductAdapterCallback {
         setupCategoryRecyclerView()
 
         viewLifecycleOwner.collectWithLifecycle(Lifecycle.State.STARTED) {
-            launch {
-                viewModel.uiState.collect { state ->
-                    if (state.isLoading) {
-                        binding.clGroup.isVisible = false
-                    }
-
-                    if (!state.errorMessage.isNullOrEmpty()) println("error : ${state.errorMessage}")
-
-                    if (state.list.isNotEmpty()) {
-                        binding.clGroup.isVisible = true
-                        productAdapter.submitList(state.list.subList(0, 3))
-                    }
+            viewModel.uiState.collect { state ->
+                if (state.isLoading) {
+                    binding.clGroup.isVisible = false
                 }
-            }
 
-            launch {
-                viewModel.uiEvent.collect { event ->
-                    when (event) {
-                        is HomeUiEvent.NavigateSeeAll -> {
-                            val action =
-                                HomeFragmentDirections.actionHomeFragmentToProductListFragment(
-                                    event.list.toTypedArray(), null
-                                )
-                            findNavController().navigate(action)
-                        }
-                    }
+                if (!state.errorMessage.isNullOrEmpty()) println("error : ${state.errorMessage}")
+
+                if (state.list.isNotEmpty()) {
+                    binding.clGroup.isVisible = true
+                    productAdapter.submitList(state.list.subList(0, 3))
                 }
             }
         }
@@ -79,7 +62,14 @@ class HomeFragment : Fragment(R.layout.fragment_home), ProductAdapterCallback {
             }
 
             tvSeeAll.setOnClickListener {
-                viewModel.navigateSeeAll()
+
+                val productList = viewModel.uiState.value.list
+                val action =
+                    HomeFragmentDirections.actionHomeFragmentToProductListFragment(
+                        productList.toTypedArray(), null
+                    )
+                findNavController().navigate(action)
+
             }
         }
     }

@@ -28,8 +28,6 @@ class ProductDetailFragment : Fragment(R.layout.fragment_product_detail) {
     private fun initView(product: ProductUIModel) = with(binding) {
         toolbar.setNavigationOnClickListener { findNavController().navigateUp() }
 
-        println("args: ${args.product.title}")
-
         ivProductImage.loadImage(product.imageUrl)
         tvProductCategory.text = product.category
         tvProductTitle.text = product.title

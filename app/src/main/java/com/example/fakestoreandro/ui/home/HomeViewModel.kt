@@ -4,13 +4,10 @@ import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.fakestoreandro.data.repository.ProductRepository
-import com.example.fakestoreandro.model.ProductUIModel
 import com.example.fakestoreandro.util.Resource
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.delay
-import kotlinx.coroutines.flow.MutableSharedFlow
 import kotlinx.coroutines.flow.MutableStateFlow
-import kotlinx.coroutines.flow.asSharedFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.launch
 import javax.inject.Inject
@@ -22,9 +19,6 @@ class HomeViewModel @Inject constructor(
 
     private val _uiState = MutableStateFlow(HomeUiState(isLoading = true))
     val uiState = _uiState.asStateFlow()
-
-    private val _uiEvent = MutableSharedFlow<HomeUiEvent>()
-    val uiEvent = _uiEvent.asSharedFlow()
 
     init {
         getProductList()
@@ -46,12 +40,6 @@ class HomeViewModel @Inject constructor(
                     }
                 }
             }
-        }
-    }
-
-    fun navigateSeeAll() {
-        viewModelScope.launch {
-            _uiEvent.emit(HomeUiEvent.NavigateSeeAll(list = _uiState.value.list))
         }
     }
 
@@ -77,14 +65,3 @@ class HomeViewModel @Inject constructor(
     }
 }
 
-data class HomeUiState(
-    val list: List<ProductUIModel> = emptyList(),
-    val errorMessage: String? = null,
-    val isLoading: Boolean = false,
-)
-
-interface UiEvent
-
-sealed interface HomeUiEvent: UiEvent {
-    data class NavigateSeeAll(val list: List<ProductUIModel>) : HomeUiEvent
-}

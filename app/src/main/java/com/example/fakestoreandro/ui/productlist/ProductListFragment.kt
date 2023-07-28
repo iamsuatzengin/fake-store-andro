@@ -10,6 +10,8 @@ import androidx.recyclerview.widget.GridLayoutManager
 import com.example.fakestoreandro.R
 import com.example.fakestoreandro.databinding.FragmentProductListBinding
 import com.example.fakestoreandro.model.ProductUIModel
+import com.example.fakestoreandro.ui.customview.snackbar.Snackbom
+import com.example.fakestoreandro.ui.customview.snackbar.SnackbomType
 import com.example.fakestoreandro.ui.home.adapter.product.ProductAdapter
 import com.example.fakestoreandro.ui.home.adapter.product.ProductAdapterCallback
 import com.example.fakestoreandro.util.Resource
@@ -54,7 +56,12 @@ class ProductListFragment : Fragment(R.layout.fragment_product_list), ProductAda
                     productAdapter.submitList(state.data)
                 }
 
-                is Resource.Error -> println("Error : ${state.errorMessage}")
+                is Resource.Error -> Snackbom.make(
+                    requireView(),
+                    "Error: ${state.errorMessage}",
+                    SnackbomType.ERROR
+                )
+
                 Resource.Loading -> println("loading!!!")
             }
         }
@@ -79,7 +86,10 @@ class ProductListFragment : Fragment(R.layout.fragment_product_list), ProductAda
     }
 
     override fun onClickAddToBagButton(product: ProductUIModel) {
-
+        Snackbom.make(
+            view = requireView(),
+            text = "Product added to basket.",
+            type = SnackbomType.INFO
+        ).show()
     }
-
 }
