@@ -16,4 +16,6 @@
 
     <color name="color_bottom_nav_item_active">#F57C00</color>
     <color name="color_bottom_nav_item_inactive">#3C3C3C</color>
+
+    <color name="color_snackbar_icon">#F57C00</color>
 </resources>

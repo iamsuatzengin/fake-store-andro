@@ -18,6 +18,7 @@ import com.example.fakestoreandro.util.Resource
 import com.example.fakestoreandro.util.extension.collectWithLifecycle
 import com.example.fakestoreandro.util.viewbinding.viewBinding
 import dagger.hilt.android.AndroidEntryPoint
+import kotlin.random.Random
 
 @AndroidEntryPoint
 class ProductListFragment : Fragment(R.layout.fragment_product_list), ProductAdapterCallback {
@@ -86,10 +87,11 @@ class ProductListFragment : Fragment(R.layout.fragment_product_list), ProductAda
     }
 
     override fun onClickAddToBagButton(product: ProductUIModel) {
+        val randomType = SnackbomType.values()[Random.nextInt(0, 3)]
         Snackbom.make(
             view = requireView(),
             text = "Product added to basket.",
-            type = SnackbomType.INFO
+            type = randomType
         ).show()
     }
 }

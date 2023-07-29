@@ -25,8 +25,15 @@ class SnackbomView @JvmOverloads constructor(
     }
 
     fun setType(type: SnackbomType) {
-        setBackground(type.background)
-        setMessageTextColor(type.textColor)
+        type.apply {
+            setBackground(background)
+            setIcon(icon)
+            setMessageTextColor(textColor)
+        }
+    }
+
+    private fun setIcon(icon: Int) {
+        binding.ivSnackbarIcon.setImageResource(icon)
     }
 
     private fun setBackground(@DrawableRes background: Int) {
