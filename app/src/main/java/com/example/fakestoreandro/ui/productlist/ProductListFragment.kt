@@ -10,6 +10,7 @@ import androidx.recyclerview.widget.GridLayoutManager
 import com.example.fakestoreandro.R
 import com.example.fakestoreandro.databinding.FragmentProductListBinding
 import com.example.fakestoreandro.model.ProductUIModel
+import com.example.fakestoreandro.ui.customview.LoadingDialog
 import com.example.fakestoreandro.ui.customview.snackbar.Snackbom
 import com.example.fakestoreandro.ui.customview.snackbar.SnackbomType
 import com.example.fakestoreandro.ui.home.adapter.product.ProductAdapter
@@ -31,6 +32,10 @@ class ProductListFragment : Fragment(R.layout.fragment_product_list), ProductAda
     private val viewModel by viewModels<ProductListViewModel>()
 
     private val args by navArgs<ProductListFragmentArgs>()
+
+    private val loadingDialog: LoadingDialog by lazy {
+        LoadingDialog(requireContext())
+    }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -55,15 +60,21 @@ class ProductListFragment : Fragment(R.layout.fragment_product_list), ProductAda
             when (state) {
                 is Resource.Success -> {
                     productAdapter.submitList(state.data)
+                    loadingDialog.showLoading(false)
                 }
 
-                is Resource.Error -> Snackbom.make(
-                    requireView(),
-                    "Error: ${state.errorMessage}",
-                    SnackbomType.ERROR
-                )
+                is Resource.Error -> {
+                    Snackbom.make(
+                        requireView(),
+                        "Error: ${state.errorMessage}",
+                        SnackbomType.ERROR
+                    )
+                    loadingDialog.showLoading(false)
+                }
 
-                Resource.Loading -> println("loading!!!")
+                Resource.Loading -> {
+                    loadingDialog.showLoading(true)
+                }
             }
         }
     }

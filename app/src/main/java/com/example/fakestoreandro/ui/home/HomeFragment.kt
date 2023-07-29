@@ -13,6 +13,7 @@ import com.example.fakestoreandro.R
 import com.example.fakestoreandro.databinding.FragmentHomeBinding
 import com.example.fakestoreandro.model.CategoryType
 import com.example.fakestoreandro.model.ProductUIModel
+import com.example.fakestoreandro.ui.customview.LoadingDialog
 import com.example.fakestoreandro.ui.home.adapter.RecyclerViewItemDecoration
 import com.example.fakestoreandro.ui.home.adapter.category.CategoryAdapter
 import com.example.fakestoreandro.ui.home.adapter.product.ProductAdapter
@@ -32,6 +33,9 @@ class HomeFragment : Fragment(R.layout.fragment_home), ProductAdapterCallback {
 
     private val categoryAdapter: CategoryAdapter by lazy { CategoryAdapter(this::onCategoryClick) }
 
+    private val loadingDialog: LoadingDialog by lazy {
+        LoadingDialog(requireContext())
+    }
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
@@ -40,9 +44,11 @@ class HomeFragment : Fragment(R.layout.fragment_home), ProductAdapterCallback {
 
         viewLifecycleOwner.collectWithLifecycle(Lifecycle.State.STARTED) {
             viewModel.uiState.collect { state ->
-                if (state.isLoading) {
-                    binding.clGroup.isVisible = false
-                }
+                if(state.isLoading) binding.clGroup.isVisible = false
+
+                loadingDialog.showLoading(state.isLoading)
+
+                println("state is Loading: ${state.isLoading}")
 
                 if (!state.errorMessage.isNullOrEmpty()) println("error : ${state.errorMessage}")
 
