@@ -1,7 +1,7 @@
 package com.example.fakestoreandro.mapper
 
 import com.example.fakestoreandro.data.model.ProductDto
-import com.example.fakestoreandro.model.ProductUIModel
+import com.example.fakestoreandro.domain.model.ProductUIModel
 
 fun ProductDto.toProductUIModel() = ProductUIModel(
     id = id ?: 0,

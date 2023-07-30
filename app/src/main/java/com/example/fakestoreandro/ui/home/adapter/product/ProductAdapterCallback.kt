@@ -1,6 +1,6 @@
 package com.example.fakestoreandro.ui.home.adapter.product
 
-import com.example.fakestoreandro.model.ProductUIModel
+import com.example.fakestoreandro.domain.model.ProductUIModel
 
 interface ProductAdapterCallback {
     fun onClickCard(product: ProductUIModel)

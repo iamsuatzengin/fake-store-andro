@@ -1,4 +1,4 @@
-package com.example.fakestoreandro.model
+package com.example.fakestoreandro.domain.model
 
 import android.os.Parcelable
 import kotlinx.parcelize.Parcelize

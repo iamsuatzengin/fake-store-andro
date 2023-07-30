@@ -3,7 +3,7 @@ package com.example.fakestoreandro.ui.productlist
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.fakestoreandro.data.repository.ProductRepository
-import com.example.fakestoreandro.model.ProductUIModel
+import com.example.fakestoreandro.domain.model.ProductUIModel
 import com.example.fakestoreandro.util.Resource
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow

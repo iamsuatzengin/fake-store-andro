@@ -2,7 +2,7 @@ package com.example.fakestoreandro.ui.home.adapter.product
 
 import android.view.ViewGroup
 import androidx.recyclerview.widget.ListAdapter
-import com.example.fakestoreandro.model.ProductUIModel
+import com.example.fakestoreandro.domain.model.ProductUIModel
 
 class ProductAdapter(
     private val productAdapterCallback: ProductAdapterCallback

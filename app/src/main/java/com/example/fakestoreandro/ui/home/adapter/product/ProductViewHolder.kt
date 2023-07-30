@@ -4,7 +4,7 @@ import android.content.Context
 import android.view.LayoutInflater
 import androidx.recyclerview.widget.RecyclerView
 import com.example.fakestoreandro.databinding.ItemProductBinding
-import com.example.fakestoreandro.model.ProductUIModel
+import com.example.fakestoreandro.domain.model.ProductUIModel
 import com.example.fakestoreandro.util.extension.addPrefix
 import com.example.fakestoreandro.util.extension.loadImage
 

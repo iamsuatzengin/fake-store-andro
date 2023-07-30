@@ -1,7 +1,7 @@
 package com.example.fakestoreandro.ui.home.adapter.product
 
 import androidx.recyclerview.widget.DiffUtil
-import com.example.fakestoreandro.model.ProductUIModel
+import com.example.fakestoreandro.domain.model.ProductUIModel
 
 class DiffCallback : DiffUtil.ItemCallback<ProductUIModel>() {
     override fun areItemsTheSame(oldItem: ProductUIModel, newItem: ProductUIModel): Boolean {

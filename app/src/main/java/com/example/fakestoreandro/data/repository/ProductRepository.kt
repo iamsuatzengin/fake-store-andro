@@ -2,7 +2,7 @@ package com.example.fakestoreandro.data.repository
 
 import com.example.fakestoreandro.data.service.ApiService
 import com.example.fakestoreandro.mapper.toProductUIModel
-import com.example.fakestoreandro.model.ProductUIModel
+import com.example.fakestoreandro.domain.model.ProductUIModel
 import com.example.fakestoreandro.util.Resource
 import com.example.fakestoreandro.util.extension.mapOnSuccess
 import kotlinx.coroutines.flow.Flow

@@ -1,7 +1,7 @@
 package com.example.fakestoreandro.ui.home.adapter.category
 
 import androidx.recyclerview.widget.DiffUtil
-import com.example.fakestoreandro.model.CategoryType
+import com.example.fakestoreandro.domain.model.CategoryType
 
 class CategoryDiffCallback : DiffUtil.ItemCallback<CategoryType>() {
     override fun areItemsTheSame(oldItem: CategoryType, newItem: CategoryType): Boolean {

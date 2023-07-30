@@ -1,4 +1,4 @@
-package com.example.fakestoreandro.model
+package com.example.fakestoreandro.domain.model
 
 import androidx.annotation.DrawableRes
 import com.example.fakestoreandro.R

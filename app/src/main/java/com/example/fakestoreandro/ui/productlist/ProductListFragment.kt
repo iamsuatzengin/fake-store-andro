@@ -9,7 +9,7 @@ import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.GridLayoutManager
 import com.example.fakestoreandro.R
 import com.example.fakestoreandro.databinding.FragmentProductListBinding
-import com.example.fakestoreandro.model.ProductUIModel
+import com.example.fakestoreandro.domain.model.ProductUIModel
 import com.example.fakestoreandro.ui.customview.LoadingDialog
 import com.example.fakestoreandro.ui.customview.snackbar.Snackbom
 import com.example.fakestoreandro.ui.customview.snackbar.SnackbomType

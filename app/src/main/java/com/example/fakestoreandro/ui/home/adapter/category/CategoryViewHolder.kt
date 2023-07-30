@@ -4,7 +4,7 @@ import android.content.Context
 import android.view.LayoutInflater
 import androidx.recyclerview.widget.RecyclerView
 import com.example.fakestoreandro.databinding.ItemCategoryBinding
-import com.example.fakestoreandro.model.CategoryType
+import com.example.fakestoreandro.domain.model.CategoryType
 
 class CategoryViewHolder(
     private val binding: ItemCategoryBinding

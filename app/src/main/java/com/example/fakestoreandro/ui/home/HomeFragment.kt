@@ -11,8 +11,8 @@ import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.fakestoreandro.R
 import com.example.fakestoreandro.databinding.FragmentHomeBinding
-import com.example.fakestoreandro.model.CategoryType
-import com.example.fakestoreandro.model.ProductUIModel
+import com.example.fakestoreandro.domain.model.CategoryType
+import com.example.fakestoreandro.domain.model.ProductUIModel
 import com.example.fakestoreandro.ui.customview.LoadingDialog
 import com.example.fakestoreandro.ui.home.adapter.RecyclerViewItemDecoration
 import com.example.fakestoreandro.ui.home.adapter.category.CategoryAdapter

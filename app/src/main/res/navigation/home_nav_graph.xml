@@ -26,7 +26,7 @@
         android:label="ProductBottomSheetFragment">
         <argument
             android:name="product"
-            app:argType="com.example.fakestoreandro.model.ProductUIModel" />
+            app:argType="com.example.fakestoreandro.domain.model.ProductUIModel" />
     </dialog>
     <fragment
         android:id="@+id/productDetailFragment"
@@ -35,7 +35,7 @@
         tools:layout="@layout/fragment_product_detail" >
         <argument
             android:name="product"
-            app:argType="com.example.fakestoreandro.model.ProductUIModel" />
+            app:argType="com.example.fakestoreandro.domain.model.ProductUIModel" />
     </fragment>
     <fragment
         android:id="@+id/productListFragment"
@@ -44,7 +44,7 @@
         tools:layout="@layout/fragment_product_list">
         <argument
             android:name="product_list"
-            app:argType="com.example.fakestoreandro.model.ProductUIModel[]" />
+            app:argType="com.example.fakestoreandro.domain.model.ProductUIModel[]" />
         <argument
             android:name="category"
             app:argType="string"

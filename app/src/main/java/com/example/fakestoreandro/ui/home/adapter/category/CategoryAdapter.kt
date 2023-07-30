@@ -2,7 +2,7 @@ package com.example.fakestoreandro.ui.home.adapter.category
 
 import android.view.ViewGroup
 import androidx.recyclerview.widget.ListAdapter
-import com.example.fakestoreandro.model.CategoryType
+import com.example.fakestoreandro.domain.model.CategoryType
 
 class CategoryAdapter(
     private val onCategoryClick: (CategoryType) -> Unit
