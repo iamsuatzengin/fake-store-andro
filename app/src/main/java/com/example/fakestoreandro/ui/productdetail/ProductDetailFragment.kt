@@ -10,6 +10,7 @@ import androidx.navigation.fragment.navArgs
 import com.example.fakestoreandro.R
 import com.example.fakestoreandro.databinding.FragmentProductDetailBinding
 import com.example.fakestoreandro.domain.model.ProductUIModel
+import com.example.fakestoreandro.ui.UiEvent
 import com.example.fakestoreandro.ui.customview.LoadingDialog
 import com.example.fakestoreandro.ui.customview.snackbar.Snackbom
 import com.example.fakestoreandro.ui.customview.snackbar.SnackbomType

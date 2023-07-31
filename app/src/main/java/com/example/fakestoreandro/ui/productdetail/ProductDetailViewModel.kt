@@ -5,6 +5,7 @@ import androidx.lifecycle.viewModelScope
 import com.example.fakestoreandro.data.local.entity.Basket
 import com.example.fakestoreandro.domain.model.ProductUIModel
 import com.example.fakestoreandro.domain.usecase.AddToBasketUseCase
+import com.example.fakestoreandro.ui.UiEvent
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.MutableSharedFlow
@@ -63,9 +64,3 @@ class ProductDetailViewModel @Inject constructor(
 data class ProductUIState(
     val isLoading: Boolean = false,
 )
-
-sealed interface UiEvent {
-    data class Success(val successMessage: String) : UiEvent
-
-    data class Error(val errorMessage: String) : UiEvent
-}

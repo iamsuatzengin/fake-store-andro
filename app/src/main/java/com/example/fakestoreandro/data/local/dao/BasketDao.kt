@@ -21,5 +21,8 @@ interface BasketDao {
     suspend fun delete(basket: Basket)
 
     @Query("UPDATE basket SET product_quantity = product_quantity + 1 WHERE id = :itemId")
-    suspend fun updateQuantity(itemId: Int)
+    suspend fun updateQuantityIncrease(itemId: Int)
+
+    @Query("UPDATE basket SET product_quantity = product_quantity - 1 WHERE id = :itemId")
+    suspend fun updateQuantityDecrease(itemId: Int)
 }

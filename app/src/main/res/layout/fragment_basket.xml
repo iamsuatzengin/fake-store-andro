@@ -13,15 +13,25 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:navigationIcon="@drawable/ic_navigation_back"
         app:title="My Cart"
         app:titleCentered="true" />
 
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rv_basket"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+        app:layout_constraintBottom_toTopOf="@id/cl_continue"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/toolbar" />
+
     <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/cl_continue"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:padding="@dimen/padding_16dp"
         android:background="@drawable/bg_basket_price"
+        android:padding="@dimen/padding_16dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent">
@@ -30,7 +40,7 @@
             android:id="@+id/tv_selected_products"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Selected Products (2)"
+            android:text="@string/text_selected_products"
             android:textColor="@color/color_button_orange"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -39,14 +49,14 @@
             android:id="@+id/tv_total_price"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="321,39 TL"
+            tools:text="321,39 TL"
             android:textColor="@color/black"
             android:textSize="@dimen/text_size_18sp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/tv_selected_products" />
 
         <androidx.constraintlayout.widget.Guideline
-            android:id="@+id/bottom_cl_guideline"
+            android:id="@+id/guideline"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="vertical"
@@ -54,14 +64,14 @@
 
         <Button
             android:id="@+id/btn_continue"
+            style="@style/MyButton"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toEndOf="@id/guideline"
             android:text="@string/btn_text_continue"
-            style="@style/MyButton"
-            app:layout_constraintEnd_toEndOf="parent"
             android:textAllCaps="false"
-            app:layout_constraintStart_toEndOf="@id/bottom_cl_guideline"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

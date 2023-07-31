@@ -18,11 +18,15 @@ class BasketRepository @Inject constructor(
         basketDao.addProduct(basket)
     }
 
-    suspend fun updateQuantity(itemId: Int) = withContext(Dispatchers.IO) {
-        basketDao.updateQuantity(itemId)
+    suspend fun updateQuantityIncrease(itemId: Int) = withContext(Dispatchers.IO) {
+        basketDao.updateQuantityIncrease(itemId)
     }
 
-    suspend fun delete(basket: Basket) = withContext(Dispatchers.IO) {
+    suspend fun updateQuantityDecrease(itemId: Int) = withContext(Dispatchers.IO) {
+        basketDao.updateQuantityDecrease(itemId)
+    }
+
+    suspend fun deleteProductFromBasket(basket: Basket) = withContext(Dispatchers.IO) {
         basketDao.delete(basket)
     }
 }

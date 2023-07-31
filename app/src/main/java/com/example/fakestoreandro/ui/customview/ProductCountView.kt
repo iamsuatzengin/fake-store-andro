@@ -17,7 +17,7 @@ class ProductCountView @JvmOverloads constructor(
     private val binding: LayoutProductCountBinding =
         LayoutProductCountBinding.inflate(LayoutInflater.from(context), this)
 
-    private var count: Int = 0
+    private var count: Int = 1
 
     private var countListener: ((Int) -> Unit)? = null
 
@@ -27,11 +27,30 @@ class ProductCountView @JvmOverloads constructor(
 
     private fun initView() = with(binding) {
         tvCount.text = count.toString()
-
-        btnAdd.setOnClickListener { onClickAddButton() }
-        btnRemove.setOnClickListener { onClickRemoveButton() }
     }
 
+    fun onAddButtonClickListener(listener: () -> Unit) {
+        binding.btnAdd.setOnClickListener {
+            onClickAddButton()
+            listener()
+        }
+    }
+
+    fun onRemoveButtonClickListener(listener: () -> Unit) {
+        binding.btnRemove.setOnClickListener {
+            onClickRemoveButton()
+            listener()
+        }
+    }
+
+    fun setCountListener(listener: (Int) -> Unit) {
+        countListener = listener
+    }
+
+    fun setItemCount(quantity: Int) {
+        count = quantity
+        binding.tvCount.text = quantity.toString()
+    }
 
     private fun onClickAddButton() {
         scaleAnimation().start()
@@ -51,10 +70,6 @@ class ProductCountView @JvmOverloads constructor(
         scaleAnimationReverse().startReverseAnim()
 
         countListener?.invoke(count)
-    }
-
-    fun setCountListener(listener: (Int) -> Unit) {
-        countListener = listener
     }
 
     private fun updateCountText() {
