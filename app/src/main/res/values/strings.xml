@@ -26,4 +26,5 @@
     <string name="text_selected_products">Selected Products (%d)</string>
     <string name="content_description_increase_button">Increase Button</string>
     <string name="content_description_decrease_button">Decrease Button</string>
+    <string name="text_basket_empty_state">Your cart is empty.\nStart shopping by adding your favorite products!</string>
 </resources>

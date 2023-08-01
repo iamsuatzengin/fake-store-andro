@@ -49,11 +49,11 @@
             android:id="@+id/tv_total_price"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            tools:text="321,39 TL"
             android:textColor="@color/black"
             android:textSize="@dimen/text_size_18sp"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/tv_selected_products" />
+            app:layout_constraintTop_toBottomOf="@id/tv_selected_products"
+            tools:text="321,39 TL" />
 
         <androidx.constraintlayout.widget.Guideline
             android:id="@+id/guideline"
@@ -67,11 +67,47 @@
             style="@style/MyButton"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            app:layout_constraintStart_toEndOf="@id/guideline"
             android:text="@string/btn_text_continue"
             android:textAllCaps="false"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/guideline"
             app:layout_constraintTop_toTopOf="parent" />
     </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <com.airbnb.lottie.LottieAnimationView
+        android:id="@+id/anim_empty_state"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:lottie_autoPlay="true"
+        app:lottie_loop="true"
+        app:lottie_rawRes="@raw/anim_empty_state" />
+
+    <TextView
+        android:id="@+id/tv_empty_state"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/margin_8dp"
+        android:gravity="center"
+        android:text="@string/text_basket_empty_state"
+        android:textSize="@dimen/text_size_16sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/anim_empty_state" />
+
+    <androidx.constraintlayout.widget.Group
+        android:id="@+id/cl_group_main_views"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:constraint_referenced_ids="cl_continue, rv_basket" />
+
+    <androidx.constraintlayout.widget.Group
+        android:id="@+id/cl_group_empty_state"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:constraint_referenced_ids="anim_empty_state, tv_empty_state" />
 </androidx.constraintlayout.widget.ConstraintLayout>

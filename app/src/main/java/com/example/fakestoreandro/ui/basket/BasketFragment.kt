@@ -2,6 +2,7 @@ package com.example.fakestoreandro.ui.basket
 
 import android.os.Bundle
 import android.view.View
+import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.Lifecycle
@@ -71,6 +72,9 @@ class BasketFragment : Fragment(R.layout.fragment_basket), BasketAdapterCallback
             val selected = resources.getString(R.string.text_selected_products, uiState.list.size)
             tvSelectedProducts.text = selected
             tvTotalPrice.text = uiState.totalPrice.toString() addPrefix "$"
+
+            clGroupMainViews.isVisible = uiState.list.isNotEmpty()
+            clGroupEmptyState.isVisible = uiState.list.isEmpty()
         }
     }
 
