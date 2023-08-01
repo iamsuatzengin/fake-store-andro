@@ -51,7 +51,7 @@ android {
 dependencies {
     def nav_version = "2.6.0"
     def ktor_version = "2.3.0"
-    def lottieVersion = "3.4.0"
+    def lottieVersion = "6.0.0"
     def room_version = "2.5.2"
 
     implementation 'androidx.core:core-ktx:1.10.1'
@@ -84,6 +84,9 @@ dependencies {
 
     // Lottie animation
     implementation "com.airbnb.android:lottie:$lottieVersion"
+
+    // DataStore
+    implementation "androidx.datastore:datastore-preferences:1.0.0"
 
     testImplementation 'junit:junit:4.13.2'
     androidTestImplementation 'androidx.test.ext:junit:1.1.5'

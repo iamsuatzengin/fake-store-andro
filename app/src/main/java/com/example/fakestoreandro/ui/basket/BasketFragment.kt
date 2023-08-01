@@ -3,7 +3,7 @@ package com.example.fakestoreandro.ui.basket
 import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.viewModels
+import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.Lifecycle
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -27,13 +27,11 @@ import kotlinx.coroutines.launch
 class BasketFragment : Fragment(R.layout.fragment_basket), BasketAdapterCallback {
     private val binding by viewBinding(FragmentBasketBinding::bind)
 
-    private val viewModel: BasketViewModel by viewModels()
+    private val viewModel: BasketViewModel by activityViewModels()
 
     private val loadingDialog: LoadingDialog by lazy { LoadingDialog(requireContext()) }
 
-    private val basketAdapter: BasketAdapter by lazy {
-        BasketAdapter(this)
-    }
+    private val basketAdapter: BasketAdapter by lazy { BasketAdapter(this) }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
