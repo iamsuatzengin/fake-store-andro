@@ -22,5 +22,6 @@
     <dimen name="text_size_18sp">18sp</dimen>
     <dimen name="size_1dp">1dp</dimen>
     <dimen name="margin_24dp">24dp</dimen>
+    <dimen name="padding_24dp">24dp</dimen>
 
 </resources>

@@ -1,13 +1,73 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     tools:context=".ui.profile.ProfileFragment">
 
-    <TextView
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="Profile Fragment" />
+        android:layout_height="wrap_content"
+        android:background="@drawable/bg_profile_header"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:padding="@dimen/padding_24dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
-</FrameLayout>
+        <FrameLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/bg_name_first_char_circular">
+
+            <TextView
+                style="@style/Title.Bold"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="SZ" />
+        </FrameLayout>
+
+        <TextView
+            style="@style/Title.Bold"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_16dp"
+            android:text="Suat Zengin"
+            android:textSize="24sp" />
+    </LinearLayout>
+
+    <com.example.fakestoreandro.ui.customview.PRow
+        android:id="@+id/row_my_orders"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:startIcon="@drawable/ic_shopping_bag"
+        app:text="My Orders" />
+
+    <com.example.fakestoreandro.ui.customview.PRow
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:startIcon="@drawable/ic_person_pin"
+        app:text="User Information" />
+
+    <com.example.fakestoreandro.ui.customview.PRow
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:startIcon="@drawable/ic_favorite_border"
+        app:text="Favorites" />
+
+    <com.example.fakestoreandro.ui.customview.PRow
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:startIcon="@drawable/ic_location"
+        app:text="Address" />
+
+
+    <com.example.fakestoreandro.ui.customview.PRow
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:startIcon="@drawable/ic_setting"
+        app:text="Settings" />
+</LinearLayout>
