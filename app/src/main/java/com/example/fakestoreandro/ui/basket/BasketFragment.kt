@@ -6,6 +6,7 @@ import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.Lifecycle
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.fakestoreandro.R
@@ -75,6 +76,11 @@ class BasketFragment : Fragment(R.layout.fragment_basket), BasketAdapterCallback
 
             clGroupMainViews.isVisible = uiState.list.isNotEmpty()
             clGroupEmptyState.isVisible = uiState.list.isEmpty()
+
+            btnContinue.setOnClickListener {
+                val action = BasketFragmentDirections.toPaymentFragment()
+                findNavController().navigate(action)
+            }
         }
     }
 
