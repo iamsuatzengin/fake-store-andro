@@ -4,7 +4,7 @@
     <color name="white">#FFFFFFFF</color>
     <color name="color_gray">#EDEEEE</color>
 
-    <color name="color_button_orange">#F57C00</color>
+    <color name="color_primary">#F57C00</color>
     <color name="color_bg_red">#C62828</color>
     <color name="color_button_pink">#F5475A</color>
     <color name="color_button_blue">#003FFF</color>

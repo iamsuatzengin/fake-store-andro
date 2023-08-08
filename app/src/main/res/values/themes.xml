@@ -4,6 +4,8 @@
         <!-- Customize your light theme here. -->
         <item name="bottomSheetDialogTheme">@style/CustomBottomSheetDialog</item>
 
+        <item name="colorPrimary">@color/color_primary</item>
+
         <item name="android:navigationBarColor">
             @android:color/transparent
         </item>

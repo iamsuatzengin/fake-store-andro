@@ -29,4 +29,12 @@
     <string name="text_basket_empty_state">Your cart is empty.\nStart shopping by adding your favorite products!</string>
     <string name="content_desc_row_icon">row icon</string>
     <string name="content_desc_navigate_next_icon">Navigate next icon</string>
+    <string name="text_cvc">CVC</string>
+    <string name="text_expiry_date">Expiry Date</string>
+    <string name="text_card_holder_name">Card Holder Name</string>
+    <string name="text_credit_card_number">Credit Card Number</string>
+    <string name="placeholder_card_number">**** **** **** 5544</string>
+    <string name="text_your_name">Your Name</string>
+    <string name="placeholder_expiry_date">02/30</string>
+    <string name="btn_text_complete">Complete</string>
 </resources>

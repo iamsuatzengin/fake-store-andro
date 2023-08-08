@@ -54,7 +54,7 @@
             android:layout_marginTop="@dimen/padding_8dp"
             style="@style/MyButton.Outlined"
             android:text="@string/btn_text_add_to_bag"
-            android:textColor="@color/color_button_orange"
+            android:textColor="@color/color_primary"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"

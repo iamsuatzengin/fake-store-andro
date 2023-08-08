@@ -24,7 +24,7 @@ class ProfileFragment : Fragment(R.layout.fragment_profile) {
         super.onStart()
 
         requireActivity().window.statusBarColor =
-            ResourcesCompat.getColor(resources, R.color.color_button_orange, null)
+            ResourcesCompat.getColor(resources, R.color.color_primary, null)
     }
 
     override fun onDestroy() {
