@@ -29,4 +29,8 @@ class BasketRepository @Inject constructor(
     suspend fun deleteProductFromBasket(basket: Basket) = withContext(Dispatchers.IO) {
         basketDao.delete(basket)
     }
+
+    suspend fun deleteAll() = withContext(Dispatchers.IO) {
+        basketDao.deleteAll()
+    }
 }

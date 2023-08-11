@@ -39,7 +39,13 @@ class MainActivity : AppCompatActivity() {
         binding.bottomNavigation.setupWithNavController(navController)
 
         navController.addOnDestinationChangedListener { _, destination, _ ->
-            binding.bottomNavigation.isVisible = destination.id != R.id.productDetailFragment
+            when(destination.id) {
+                R.id.productDetailFragment -> binding.bottomNavigation.isVisible = false
+                R.id.paymentFragment -> binding.bottomNavigation.isVisible = false
+                R.id.paymentSuccessFragment -> binding.bottomNavigation.isVisible = false
+
+                else -> binding.bottomNavigation.isVisible = true
+            }
 
             onBottomNavItemReselected(destination)
         }

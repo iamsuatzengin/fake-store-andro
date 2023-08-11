@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.View
 import androidx.core.widget.addTextChangedListener
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.findNavController
 import com.example.fakestoreandro.R
 import com.example.fakestoreandro.databinding.FragmentPaymentBinding
 import com.example.fakestoreandro.ui.customview.creditcard.ExpiryDateTextWatcher
@@ -20,6 +21,12 @@ class PaymentFragment : Fragment(R.layout.fragment_payment) {
     }
 
     private fun initView() = with(binding) {
+        toolbar.setNavigationOnClickListener { findNavController().navigateUp() }
+
+        btnComplete.setOnClickListener {
+            findNavController().navigate(R.id.to_paymentSuccessFragment)
+        }
+
         textFieldExpiryDate.editText?.addTextChangedListener(ExpiryDateTextWatcher {
             viewCreditCard.setExpiryDate(it.toString())
         })

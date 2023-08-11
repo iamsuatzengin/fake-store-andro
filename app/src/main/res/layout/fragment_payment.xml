@@ -7,13 +7,25 @@
     android:padding="@dimen/padding_16dp"
     tools:context=".ui.payment.PaymentFragment">
 
+    <com.google.android.material.appbar.MaterialToolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:title="Payment"
+        app:navigationIcon="@drawable/ic_navigation_back"
+        app:titleCentered="true" />
+
     <com.example.fakestoreandro.ui.customview.creditcard.CreditCardView
         android:id="@+id/view_credit_card"
         android:layout_width="match_parent"
         android:layout_height="200dp"
+        android:layout_marginTop="@dimen/margin_8dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@id/toolbar" />
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/textFieldCardNumber"
@@ -94,6 +106,7 @@
         app:layout_constraintGuide_percent="0.5" />
 
     <Button
+        android:id="@+id/btn_complete"
         style="@style/MyButton"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

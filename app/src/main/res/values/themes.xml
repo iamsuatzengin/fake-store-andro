@@ -17,6 +17,8 @@
         <item name="android:windowLightStatusBar">
             true
         </item>
+
+        <item name="android:windowIsTranslucent">true</item>
     </style>
 
     <style name="Theme.FakeStoreAndro" parent="Base.Theme.FakeStoreAndro" />
