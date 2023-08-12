@@ -1,12 +1,12 @@
 plugins {
-    id 'com.android.application'
-    id 'org.jetbrains.kotlin.android'
-    id 'androidx.navigation.safeargs.kotlin'
-    id 'kotlin-kapt'
-    id 'com.google.dagger.hilt.android'
-    id 'kotlinx-serialization'
-    id 'kotlin-parcelize'
-    id 'com.google.devtools.ksp'
+    alias libs.plugins.android.application
+    alias libs.plugins.kotlin.android
+    alias libs.plugins.nav.safe.args
+    alias libs.plugins.kotlin.kapt
+    alias libs.plugins.hilt.android
+    alias libs.plugins.kotlin.serialization
+    alias libs.plugins.kotlin.parcelize
+    alias libs.plugins.ksp
 }
 
 android {
@@ -49,46 +49,35 @@ android {
 }
 
 dependencies {
-    def nav_version = "2.6.0"
-    def ktor_version = "2.3.0"
-    def lottieVersion = "6.0.0"
-    def room_version = "2.5.2"
 
-    implementation 'androidx.core:core-ktx:1.10.1'
-    implementation 'androidx.appcompat:appcompat:1.6.1'
-    implementation 'com.google.android.material:material:1.9.0'
-    implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
+    implementation libs.androidx.core.ktx
+    implementation libs.androidx.appcompat
+    implementation libs.material
+    implementation libs.androidx.constraintlayout
 
     // Navigation
-    implementation "androidx.navigation:navigation-fragment-ktx:$nav_version"
-    implementation "androidx.navigation:navigation-ui-ktx:$nav_version"
+    implementation libs.androidx.navigation.fragment.ktx
+    implementation libs.androidx.navigation.ui.ktx
 
     // Hilt
-    implementation 'com.google.dagger:hilt-android:2.47'
-    kapt 'com.google.dagger:hilt-compiler:2.47'
+    implementation libs.hilt.android
+    kapt libs.hilt.compiler
 
     // Ktor client
-    implementation "io.ktor:ktor-client-core:$ktor_version"
-    implementation "io.ktor:ktor-client-android:$ktor_version"
-    implementation "io.ktor:ktor-client-logging:$ktor_version"
-    implementation "io.ktor:ktor-client-content-negotiation:$ktor_version"
-    implementation "io.ktor:ktor-serialization-kotlinx-json:$ktor_version"
+    implementation libs.bundles.ktor
 
     // Room DB
-    implementation "androidx.room:room-runtime:$room_version"
-    ksp "androidx.room:room-compiler:$room_version"
-    implementation "androidx.room:room-ktx:$room_version"
+    implementation libs.room.runtime
+    ksp libs.room.compiler
+    implementation libs.room.ktx
 
     // Glide
-    implementation 'com.github.bumptech.glide:glide:4.15.1'
+    implementation libs.glide
 
     // Lottie animation
-    implementation "com.airbnb.android:lottie:$lottieVersion"
+    implementation libs.lottie
 
-    // DataStore
-    implementation "androidx.datastore:datastore-preferences:1.0.0"
-
-    testImplementation 'junit:junit:4.13.2'
-    androidTestImplementation 'androidx.test.ext:junit:1.1.5'
-    androidTestImplementation 'androidx.test.espresso:espresso-core:3.5.1'
+    testImplementation libs.junit
+    androidTestImplementation libs.androidx.junit
+    androidTestImplementation libs.androidx.espresso.core
 }
