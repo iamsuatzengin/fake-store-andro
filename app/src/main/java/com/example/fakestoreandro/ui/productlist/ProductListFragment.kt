@@ -101,7 +101,7 @@ class ProductListFragment : Fragment(R.layout.fragment_product_list), ProductAda
         val randomType = SnackbomType.values()[Random.nextInt(0, 3)]
         Snackbom.make(
             view = requireView(),
-            text = "Product added to basket.",
+            text = "Snackbom Message.",
             type = randomType
         ).show()
     }

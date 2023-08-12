@@ -37,8 +37,10 @@
     <string name="text_your_name">Your Name</string>
     <string name="placeholder_expiry_date">02/30</string>
     <string name="btn_text_complete">Complete</string>
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="text_payment_successful">Payment Successful!</string>
     <string name="text_total_label">Total:</string>
+    <string name="text_payment_success_info">Total amount paid by your card!</string>
+    <string name="text_order_id_label">Order ID:</string>
+    <string name="text_order_id">#A532X</string>
+    <string name="text_btn_back_to_home_page">Back to home page</string>
 </resources>

@@ -28,7 +28,7 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:layout_marginTop="@dimen/margin_8dp"
-        android:text="Total amount paid by your card!" />
+        android:text="@string/text_payment_success_info" />
 
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -41,7 +41,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Order ID:"
+            android:text="@string/text_order_id_label"
             android:textColor="@color/black"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -50,7 +50,7 @@
             android:id="@+id/tv_order_id"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="#A532X"
+            android:text="@string/text_order_id"
             android:textColor="@color/black"
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
@@ -93,5 +93,5 @@
         style="@style/MyButton"
         android:layout_marginHorizontal="@dimen/margin_24dp"
         android:id="@+id/btn_go_back_home"
-        android:text="Back to home page"/>
+        android:text="@string/text_btn_back_to_home_page"/>
 </LinearLayout>
