@@ -79,7 +79,7 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     app:layout_constraintBottom_toBottomOf="@+id/iv_rating_star"
-                    app:layout_constraintStart_toEndOf="@id/tv_rating"
+                    app:layout_constraintStart_toEndOf="@id/tv_product_rating"
                     app:layout_constraintTop_toTopOf="@id/iv_rating_star"
                     tools:text=" (500)" />
             </LinearLayout>

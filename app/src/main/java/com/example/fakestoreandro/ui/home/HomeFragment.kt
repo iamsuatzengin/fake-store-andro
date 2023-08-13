@@ -13,6 +13,7 @@ import com.example.fakestoreandro.R
 import com.example.fakestoreandro.databinding.FragmentHomeBinding
 import com.example.fakestoreandro.domain.model.CategoryType
 import com.example.fakestoreandro.domain.model.ProductUIModel
+import com.example.fakestoreandro.ui.UiEvent
 import com.example.fakestoreandro.ui.customview.LoadingDialog
 import com.example.fakestoreandro.ui.customview.snackbar.Snackbom
 import com.example.fakestoreandro.ui.customview.snackbar.SnackbomType
@@ -23,6 +24,8 @@ import com.example.fakestoreandro.ui.home.adapter.product.ProductAdapterCallback
 import com.example.fakestoreandro.util.extension.collectWithLifecycle
 import com.example.fakestoreandro.util.viewbinding.viewBinding
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.flow.collectLatest
+import kotlinx.coroutines.launch
 
 @AndroidEntryPoint
 class HomeFragment : Fragment(R.layout.fragment_home), ProductAdapterCallback {
@@ -46,22 +49,43 @@ class HomeFragment : Fragment(R.layout.fragment_home), ProductAdapterCallback {
         setupCategoryRecyclerView()
 
         viewLifecycleOwner.collectWithLifecycle(Lifecycle.State.STARTED) {
-            viewModel.uiState.collect { state ->
-                if (state.isLoading) binding.clGroup.isVisible = false
+            launch {
+                viewModel.uiState.collect { state ->
+                    if (state.isLoading) binding.clGroup.isVisible = false
 
-                loadingDialog.showLoading(state.isLoading)
+                    loadingDialog.showLoading(state.isLoading)
 
-                if (!state.errorMessage.isNullOrEmpty()) {
-                    Snackbom.make(
-                        requireView(),
-                        state.errorMessage,
-                        SnackbomType.ERROR
-                    ).show()
+                    if (!state.errorMessage.isNullOrEmpty()) {
+                        Snackbom.make(
+                            requireView(),
+                            state.errorMessage,
+                            SnackbomType.ERROR
+                        ).show()
+                    }
+
+                    if (state.list.isNotEmpty()) {
+                        binding.clGroup.isVisible = true
+                        productAdapter.submitList(state.list.subList(0, 3))
+                    }
                 }
+            }
 
-                if (state.list.isNotEmpty()) {
-                    binding.clGroup.isVisible = true
-                    productAdapter.submitList(state.list.subList(0, 3))
+            launch {
+                viewModel.uiEvent.collectLatest { event ->
+                    when (event) {
+                        is UiEvent.Success -> Snackbom.make(
+                            requireView(),
+                            event.successMessage,
+                            SnackbomType.SUCCESS
+                        ).show()
+
+
+                        is UiEvent.Error -> Snackbom.make(
+                            requireView(),
+                            event.errorMessage,
+                            SnackbomType.ERROR
+                        ).show()
+                    }
                 }
             }
         }
@@ -120,8 +144,7 @@ class HomeFragment : Fragment(R.layout.fragment_home), ProductAdapterCallback {
     }
 
     override fun onClickAddToBagButton(product: ProductUIModel) {
-        val action = HomeFragmentDirections.actionHomeFragmentToProductBottomSheetFragment(product)
-        findNavController().navigate(action)
+        viewModel.addToBasket(productUIModel = product)
     }
 }
 

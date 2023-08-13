@@ -61,6 +61,3 @@ class ProductDetailViewModel @Inject constructor(
     }
 }
 
-data class ProductUIState(
-    val isLoading: Boolean = false,
-)

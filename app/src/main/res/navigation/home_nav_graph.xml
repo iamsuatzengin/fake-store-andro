@@ -11,23 +11,13 @@
         android:label="fragment_home"
         tools:layout="@layout/fragment_home">
         <action
-            android:id="@+id/action_homeFragment_to_productBottomSheetFragment"
-            app:destination="@id/productBottomSheetFragment" />
-        <action
             android:id="@+id/action_homeFragment_to_productDetailFragment"
             app:destination="@id/productDetailFragment" />
         <action
             android:id="@+id/action_homeFragment_to_productListFragment"
             app:destination="@id/productListFragment" />
     </fragment>
-    <dialog
-        android:id="@+id/productBottomSheetFragment"
-        android:name="com.example.fakestoreandro.ui.home.bottomsheet.ProductBottomSheetFragment"
-        android:label="ProductBottomSheetFragment">
-        <argument
-            android:name="product"
-            app:argType="com.example.fakestoreandro.domain.model.ProductUIModel" />
-    </dialog>
+
     <fragment
         android:id="@+id/productDetailFragment"
         android:name="com.example.fakestoreandro.ui.productdetail.ProductDetailFragment"
