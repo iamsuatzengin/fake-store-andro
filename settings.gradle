@@ -14,3 +14,11 @@ dependencyResolutionManagement {
 }
 rootProject.name = "FakeStoreAndro"
 include ':app'
+include ':core:util'
+include ':domain'
+include ':data:local'
+include ':feature:product'
+include ':feature:basket'
+include ':feature:profile'
+include ':core:ui'
+include ':data:network'

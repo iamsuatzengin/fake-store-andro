@@ -8,9 +8,9 @@ import androidx.navigation.NavController
 import androidx.navigation.NavDestination
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.setupWithNavController
+import com.example.basket.BasketViewModel
 import com.example.fakestoreandro.databinding.ActivityMainBinding
-import com.example.fakestoreandro.ui.basket.BasketViewModel
-import com.example.fakestoreandro.util.extension.collectWithLifecycle
+import com.example.util.extension.collectWithLifecycle
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -38,17 +38,20 @@ class MainActivity : AppCompatActivity() {
 
         binding.bottomNavigation.setupWithNavController(navController)
 
+
         navController.addOnDestinationChangedListener { _, destination, _ ->
+
             when(destination.id) {
-                R.id.productDetailFragment -> binding.bottomNavigation.isVisible = false
-                R.id.paymentFragment -> binding.bottomNavigation.isVisible = false
-                R.id.paymentSuccessFragment -> binding.bottomNavigation.isVisible = false
+                com.example.product.R.id.productDetailFragment -> binding.bottomNavigation.isVisible = false
+                com.example.basket.R.id.paymentFragment -> binding.bottomNavigation.isVisible = false
+                com.example.basket.R.id.paymentSuccessFragment -> binding.bottomNavigation.isVisible = false
 
                 else -> binding.bottomNavigation.isVisible = true
             }
 
             onBottomNavItemReselected(destination)
         }
+
 
         val badge = binding.bottomNavigation.getOrCreateBadge(R.id.basket_nav_graph)
 
@@ -68,19 +71,19 @@ class MainActivity : AppCompatActivity() {
         binding.bottomNavigation.setOnItemReselectedListener { menuItem ->
             when (menuItem.itemId) {
                 R.id.home_nav_graph -> {
-                    val startDestinationOfHomeGraph = R.id.homeFragment
+                    val startDestinationOfHomeGraph = com.example.product.R.id.homeFragment
 
                     popIfNotStartDestination(destination.id, startDestinationOfHomeGraph)
                 }
 
                 R.id.basket_nav_graph -> {
-                    val startDestinationOfHomeGraph = R.id.basketFragment
+                    val startDestinationOfHomeGraph = com.example.basket.R.id.basketFragment
 
                     popIfNotStartDestination(destination.id, startDestinationOfHomeGraph)
                 }
 
                 R.id.profile_nav_graph -> {
-                    val startDestinationOfHomeGraph = R.id.profileFragment
+                    val startDestinationOfHomeGraph = com.example.profile.R.id.profileFragment
 
                     popIfNotStartDestination(destination.id, startDestinationOfHomeGraph)
                 }

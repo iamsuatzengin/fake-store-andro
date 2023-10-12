@@ -1,0 +1,46 @@
+<resources>
+    <string name="app_name">FakeStoreAndro</string>
+    <string name="content_description_product_image">Product image</string>
+    <string name="btn_text_add_to_bag">Add to bag</string>
+    <string name="btn_add_to_bag">Add to bag</string>
+    <string name="btn_go_to_detail">Go To Detail</string>
+    <string name="edit_text_search">Search</string>
+    <string name="tv_category_label">Kategori:</string>
+    <string name="text_see_all">See all</string>
+    <string name="hot_sales">Hot Sales</string>
+
+    <!-- Menu -->
+    <string name="menu_profile">Profile</string>
+    <string name="menu_basket">Basket</string>
+    <string name="menu_home">Home</string>
+
+    <string name="product_description_lorem_ipsum">
+        Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+        Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+        Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+    </string>
+
+    <string name="product_description_lorem_ipsum_short">Lorem Ipsum is simply dummy text of the printing and typesetting industry.</string>
+
+    <string name="btn_text_continue">Continue</string>
+    <string name="text_selected_products">Selected Products (%d)</string>
+    <string name="content_description_increase_button">Increase Button</string>
+    <string name="content_description_decrease_button">Decrease Button</string>
+    <string name="text_basket_empty_state">Your cart is empty.\nStart shopping by adding your favorite products!</string>
+    <string name="content_desc_row_icon">row icon</string>
+    <string name="content_desc_navigate_next_icon">Navigate next icon</string>
+    <string name="text_cvc">CVC</string>
+    <string name="text_expiry_date">Expiry Date</string>
+    <string name="text_card_holder_name">Card Holder Name</string>
+    <string name="text_credit_card_number">Credit Card Number</string>
+    <string name="placeholder_card_number">**** **** **** 5544</string>
+    <string name="text_your_name">Your Name</string>
+    <string name="placeholder_expiry_date">02/30</string>
+    <string name="btn_text_complete">Complete</string>
+    <string name="text_payment_successful">Payment Successful!</string>
+    <string name="text_total_label">Total:</string>
+    <string name="text_payment_success_info">Total amount paid by your card!</string>
+    <string name="text_order_id_label">Order ID:</string>
+    <string name="text_order_id">#A532X</string>
+    <string name="text_btn_back_to_home_page">Back to home page</string>
+</resources>

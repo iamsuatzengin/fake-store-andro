@@ -1,22 +1,19 @@
 plugins {
     alias libs.plugins.android.application
     alias libs.plugins.kotlin.android
-    alias libs.plugins.nav.safe.args
     alias libs.plugins.kotlin.kapt
     alias libs.plugins.hilt.android
-    alias libs.plugins.kotlin.serialization
-    alias libs.plugins.kotlin.parcelize
     alias libs.plugins.ksp
 }
 
 android {
     namespace 'com.example.fakestoreandro'
-    compileSdk 33
+    compileSdk ProjectConfig.compileSdk
 
     defaultConfig {
-        applicationId "com.example.fakestoreandro"
-        minSdk 24
-        targetSdk 33
+        applicationId ProjectConfig.applicationId
+        minSdk ProjectConfig.minSdk
+        targetSdk ProjectConfig.targetSdk
         versionCode 1
         versionName "1.0"
 
@@ -24,9 +21,6 @@ android {
     }
 
     buildTypes {
-        debug {
-            buildConfigField ("String", "BASE_URL", "\"https://fakestoreapi.com/\"")
-        }
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
@@ -63,19 +57,10 @@ dependencies {
     implementation libs.hilt.android
     kapt libs.hilt.compiler
 
-    // Ktor client
-    implementation libs.bundles.ktor
-
-    // Room DB
-    implementation libs.room.runtime
-    ksp libs.room.compiler
-    implementation libs.room.ktx
-
-    // Glide
-    implementation libs.glide
-
-    // Lottie animation
-    implementation libs.lottie
+    implementation project(':core:util')
+    implementation project(':feature:basket')
+    implementation project(":feature:product")
+    implementation project(":feature:profile")
 
     testImplementation libs.junit
     androidTestImplementation libs.androidx.junit
