@@ -1,5 +1,7 @@
 ## FakeStore Andro is a fake e-commerce app 🔥
 
+You can also check <a href="https://github.com/iamsuatzengin/fake-store-andro/tree/multi-module">multi-module version</a> this application. Click or change the branch.
+
 ### Technologies: 
 * MVVM - ViewModel
 * Jetpack Navigation and Safe args
